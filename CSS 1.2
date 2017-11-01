@@ -1,0 +1,68 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{
+	margin:0;
+	padding:0;
+}
+#login-form {
+	margin:20% auto;
+	max-width:800px;
+}
+/* home page */
+#wrapper{
+	padding-top:50px;
+}
+
+#header {
+  height: 200px;
+  width: 998px;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  margin-left: -130px;
+  background: url('/IT490/LoginEx/moobeesbk.jpg') no-repeat;
+}
+
+#home-header {
+  height: 200px;
+  width: 998px;
+  position: fixed;
+  top: 800;
+  left: 50%;
+  margin-left: -130px;
+  background: url('/IT490/LoginEx/moobeesbk.jpg') no-repeat;
+}
+
+.searchform {
+  display: block;	
+  margin: 0;
+}
+
+.searchform label, 
+.searchform input {
+  color: #737373;
+  float: left;
+  vertical-align: baseline;
+}
+
+.searchform label { margin: .125em .125em 0 0; }
+
+.searchform input[type=search] {
+  font: 1em/1.618 Open Sans, Arial, Sans-serif;
+  border: .125em solid #737373;
+  border-width: 0 0 3px;
+  background-color: transparent;
+  padding: .1875em .375em;
+  width: 80%;
+}
+
+.searchform input[type=search]:focus {
+  border-color: #E18728;
+  color: #E18728;
+  outline: 0;
+}
+
+@media only screen and (min-width: 48em) {
+  .searchform input[type=search]{ width: 50%; }
+}
