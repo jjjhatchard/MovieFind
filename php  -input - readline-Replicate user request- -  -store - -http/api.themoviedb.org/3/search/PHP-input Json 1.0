@@ -1,0 +1,25 @@
+<?php
+
+$input = readline("Replicate user request: ");
+
+$store = 'http://api.themoviedb.org/3/search/movie?query='.$input.'&api_key=3da7ff1c2c411932bdf7c287d8b47f97';
+
+$new = str_replace(' ', '%20', $store);
+
+$send = file_get_contents($new);
+
+$content = "";
+
+$content.=$send;
+
+$parse = json_decode($content, true);
+
+
+#print_r($parse);
+
+echo $parse["results"][0]["title"];
+echo " ";
+echo $parse["results"][0]["overview"];
+echo " Release date ";
+echo $parse["results"][0]["release_date"];
+?>
