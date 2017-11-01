@@ -1,0 +1,36 @@
+<?php
+	ob_start();
+	session_start();
+	if( isset($_SESSION['user'])!="" ){
+		header("Location: home.php");
+	}
+	include_once 'dbconnect.php';
+
+	$error = false;
+
+	if ( isset($_POST['btn-signup']) ) {
+		
+		// clean user inputs to prevent sql injections
+		$name = trim($_POST['name']);
+		$name = strip_tags($name);
+		$name = htmlspecialchars($name);
+		
+		$email = trim($_POST['email']);
+		$email = strip_tags($email);
+		$email = htmlspecialchars($email);
+		
+		$pass = trim($_POST['pass']);
+		$pass = strip_tags($pass);
+		$pass = htmlspecialchars($pass);
+		
+		// basic name validation
+		if (empty($name)) {
+			$error = true;
+			$nameError = "Please enter your full name.";
+		} else if (strlen($name) < 3) {
+			$error = true;
+			$nameError = "Name must have atleat 3 characters.";
+		} else if (!preg_match("/^[a-zA-Z ]+$/",$name)) {
+			$error = true;
+			$nameError = "Name must contain alphabets and space.";
+		}
