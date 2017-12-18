@@ -1,0 +1,9 @@
+<?php
+//move current files to somewhere else
+echo exec("rsync -a -b --backup-dir='version1' /home/lhenriquez/testRSYNC /home/lhenriquez/BACKUP");
+//move old files to back up
+echo exec('rsync -a /home/lhenriquez/backuptest/ /home/lhenriquez/Desktop' );
+
+
+
+?>

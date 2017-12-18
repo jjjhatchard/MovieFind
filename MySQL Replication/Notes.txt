@@ -1,0 +1,66 @@
+mysql2 uuid: 9ae23118-a2ac-4035-bcde-a51cd869ff6d
+
+8c4bb517-2f23-4288-a3dc-ef4a8a28ddda
+
+GRANT ALL PRIVILEGES ON *.* To 'moobees'@'%' IDENTIFIED BY 'ImdbGr0up!';
+FLUSH PRIVILEGES;
+
+#/etc/mysql/my.cnf
+
+[mysqld]
+
+# General replication settings
+gtid_mode = ON
+enforce_gtid_consistency = ON
+master_info_repository = TABLE
+relay_log_info_repository = TABLE
+binlog_checksum = NONE
+log_slave_updates = ON
+log_bin = binlog
+binlog_format = ROW
+transaction_write_set_extraction = XXHASH64
+loose-group_replication_bootstrap_group = OFF
+loose-group_replication_start_on_boot = OFF
+loose-group_replication_ssl_mode = REQUIRED
+loose-group_replication_recovery_use_ssl = 1
+
+# Shared replication group configuration
+loose-group_replication_group_name = "8c4bb517-2f23-4288-a3dc-ef4a8a28ddda"
+loose-group_replication_ip_whitelist = "192.168.1.195,192.168.1.196"
+loose-group_replication_group_seeds = "192.168.1.195:33061,192.168.1.196:33061"
+
+# Single or Multi-primary mode? Uncomment these two lines
+# for multi-primary mode, where any host can accept writes
+loose-group_replication_single_primary_mode = OFF
+loose-group_replication_enforce_update_everywhere_checks = ON
+
+# Host specific replication configuration
+server_id = 1
+bind-address = "192.168.1.195"
+report_host = "192.168.1.195"
+loose-group_replication_local_address = "192.168.1.195:33061"
+
+#BOOTSTRAP on HOST 1
+SET GLOBAL group_replication_bootstrap_group=ON;
+START GROUP_REPLICATION;
+SET GLOBAL group_replication_bootstrap_group=OFF;
+
+#OTHER HOSTS
+START GROUP_REPLICATION;
+
+#CHECK REPLICATION GROUP
+SELECT * FROM performance_schema.replication_group_members;
+
+
+#CLEAN UNINSTALL
+sudo -i
+service mysql stop
+killall -KILL mysql mysqld_safe mysqld
+apt-get --yes purge mysql-server mysql-client
+apt-get --yes autoremove --purge
+apt-get autoclean
+deluser --remove-home mysql
+delgroup mysql
+rm -rf /etc/apparmor.d/abstractions/mysql /etc/apparmor.d/cache/usr.sbin.mysqld /etc/mysql /var/lib/mysql /var/log/mysql* /var/log/upstart/mysql.log* /var/run/mysqld
+updatedb
+exit

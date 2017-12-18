@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo cp -f -r oldver/v$1/. /var/www/html/moobees/

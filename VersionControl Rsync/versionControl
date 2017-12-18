@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#1st argument will contain your file or directory on your host machine
+#2nd argument will contain the remote directory you are sending the file to
+#3rd argument will contain the username and remote IP address
+#For example:
+# /file.txt/ /target_directory/ username@remoteIPaddress
+#4th argument will contain the name of the backed up directory
+
+localFile=$1
+remoteDir=$2
+remoteAddress=$3
+backupName=$4
+
+echo $localFile , $remoteDir, $remoteAddress, $backupName
+
+rsync -av --backup --backup-dir="$backupName" $localFile $remoteAddress:$remoteDir
+
+ssh $remoteAddress "cd $remoteDir;ls; #FINISH LOOP FOR DIRECTORY"
+
+
+
