@@ -14,9 +14,55 @@
 	ex.: ./rollback 1.81
 
 
+-----------------------------------------------
+
+- Added <a> tags to similar movies and other thumbnails
+- Removed movie titles from similar movies
+- Added logging to MySQL
+- Added logging to Backend
+
+
+----------------------------------------------
+
+- Added <a> tags to thumbnails in home screen
+- Added application logging events to Front-end
+
+-----------------------------------------------
+
+- Added condition in mysql server GetMovies function to return special string when there are no movies in a watchlist
+- Added favorites.php, plus buttons to add/remove favorites to moviedetails.php
+- Search strings now append to Search_History table, per user
+- Added Search History php page.  Loads HTML table
+- Added Clear History button to history.php
+- Now Playing
+- Recommendations/Similar
+
+------------------------------------------------
+
+- Shows button "add to watchlist" or "remove from watchlist" in moviedetails.php depending on whether the movie is in the watchlist
+- Watchlist buttons remove/add movie from Watchlist_by_User table. Movie stays in the Movies table
+- Shows "Known For" in persondetails.php
+- Added search criteria "by Year"
+- Added "No results" output when json['total_results']=0
+- Added watchlist.php, which pulls id from DB and sends query to API
+- Added GetMovies function to mysql server backend
+- Fixed divs around poster image
+
+--------------------------------------------------
+
+- added hyperlink on title section which redirects to movidetails.php
+- added hyperlink on "known for" items which redirects to movidetails.php
+- added hyperlink on cast items which redirects to persondetails.php
+- added hyperlink on Person name which redirects to persondetails.php
+- added hyperlink to go back to home.php in the dropdown menu
+
+--------------------------------------------------
+
+Forced users to change password after PW reset
+Wrapped text around images
+Added default picture for movies w/o backdrop_path value
+
+
 	
-	
-PENDING:
-Next/Previous page
-Send email to admins if brute-force attack detected
+
 
