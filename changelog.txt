@@ -1,3 +1,5 @@
+12/18/2017
+
 - Added 'Title' to thumbnails: hovering over the image now gives the movie title
 - Ratings working now
 - Fixed dropdown not working on changepassword.php
@@ -16,6 +18,8 @@
 
 -----------------------------------------------
 
+12/11/2017
+
 - Added <a> tags to similar movies and other thumbnails
 - Removed movie titles from similar movies
 - Added logging to MySQL
@@ -24,10 +28,14 @@
 
 ----------------------------------------------
 
+12/01/2017
+
 - Added <a> tags to thumbnails in home screen
 - Added application logging events to Front-end
 
 -----------------------------------------------
+
+11/22/2017
 
 - Added condition in mysql server GetMovies function to return special string when there are no movies in a watchlist
 - Added favorites.php, plus buttons to add/remove favorites to moviedetails.php
@@ -38,6 +46,8 @@
 - Recommendations/Similar
 
 ------------------------------------------------
+
+11/07/2017
 
 - Shows button "add to watchlist" or "remove from watchlist" in moviedetails.php depending on whether the movie is in the watchlist
 - Watchlist buttons remove/add movie from Watchlist_by_User table. Movie stays in the Movies table
@@ -50,6 +60,8 @@
 
 --------------------------------------------------
 
+11/01/2017
+
 - added hyperlink on title section which redirects to movidetails.php
 - added hyperlink on "known for" items which redirects to movidetails.php
 - added hyperlink on cast items which redirects to persondetails.php
@@ -57,6 +69,8 @@
 - added hyperlink to go back to home.php in the dropdown menu
 
 --------------------------------------------------
+
+10/25/2017
 
 Forced users to change password after PW reset
 Wrapped text around images
