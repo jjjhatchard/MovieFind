@@ -1,0 +1,141 @@
+
+<?php
+/*
+	ob_start();
+	session_start();
+	require_once __DIR__ . '/vendor/autoload.php';
+	use PhpAmqpLib\Message\AMQPMessage;
+	include("QueryMySQLRPC.php");
+
+	$mysql_rpc = new MySqlRPCClient();
+	if( !isset($_SESSION['user']) ) {
+		header("Location: index.php");
+		exit;
+	}
+	$full_name = $mysql_rpc->call("--GETNAME--SELECT full_name FROM Users WHERE email='" . $_SESSION['user'] . "'--GETNAME--");
+*/
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Welcome to Moo-Bees, <?php echo $full_name; ?></title>
+<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css"  />
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<header>
+	<div id="header">
+</header>
+<body>
+
+	<nav class="navbar navbar-collapse-top">
+      <div class="container">
+       
+        <div id="navbar" class="navbar-collapse collapse">
+          
+          <ul class="nav navbar-nav navbar-left">
+            
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			  <span class="glyphicon glyphicon-user"></span>&nbsp;Hi <?php echo $full_name; ?>&nbsp;<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="favorites.php">&nbsp;Favorites</a></li>
+				<li><a href="watchlist.php">&nbsp;Watchlist</a></li>
+				<li><a href="history.php">&nbsp;Search History</a></li>
+				<li><a href="logout.php?logout">&nbsp;Change Password</a></li>
+				<li><a href="logout.php?logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></li>
+              </ul>
+			  
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav> 
+
+	<div id="wrapper">
+
+	<div class="container">
+    
+    	<div class="page-header">
+    	
+		<br>
+    	</div>
+        
+        <div class="row">
+        <div class="col-lg-12">
+        
+		<form class="clearfix searchform">
+		  <label for="search-box">
+			<span class="fa fa-search fa-flip-horizontal fa-2x"></span>
+		  </label>
+		  <br><br>
+
+                   <input type = "submit" value="submit"> 
+
+		    <! Drop down menu created for genre search below>
+
+		   <select name="genre" id = "genre" onClick="clearRadio()">
+				<option value="0"> Select a Genre </option>
+				<option value="28"> Action      </option>
+				<option value="12"> Adventure   </option>
+				<option value="16"> Animation   </option>
+				<option value="35"> Comedy      </option>
+				<option value="80"> Crime       </option>
+				<option value="99"> Documentary </option>
+				<option value="18"> Drama	</option>
+				<option value="10751"> Family	</option>
+				<option value="14"> Fantasy	</option>
+				<option value="36"> History	</option>
+				<option value="27"> Horror	</option>
+				<option value="10402"> Music	</option>
+				<option value="9648">  Mystery  </option>
+				<option value="10749"> Romance  </option>
+				<option value="878"> Science Fiction </option>
+				<option value="10770"> TV Movie </option>
+				<option value="53">  Thriller   </option>
+				<option value="10752"> War	</option>
+				<option value="37">  Western 	</option>
+
+		 </select>
+
+
+		   <br> <br>
+
+                    <?php
+			
+			#Code Below is used to handle genre selection and construct the genre search query
+			#$genreSend contains the information that is needed to send to the back end server for the query 
+			$genreChoice = $_GET["genre"];
+
+			$genreSend = "with_genres=";
+
+			if(isset($genreChoice) && $genreChoice!="0") {
+
+			echo "A non zero value was chosen";
+
+			$genreSend.=$genreChoice;
+
+			echo $genreSend;
+
+			}
+
+
+
+		     ?>
+
+		</form>
+        </div>
+        </div>
+    
+    </div>
+    
+    </div>
+    
+    <script src="assets/jquery-1.11.3-jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    
+</body>
+</html>
+<?php ob_end_flush(); ?>

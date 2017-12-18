@@ -1,0 +1,22 @@
+- Added 'Title' to thumbnails: hovering over the image now gives the movie title
+- Ratings working now
+- Fixed dropdown not working on changepassword.php
+- Added connection error management to backend
+- Version generation via script completed.
+	Usage: ./generate_version verNum
+	ex.: ./generate_version 1.81
+- Updates pushed via RabbitMQ for frontend servers is working.
+	Usage: php emit_update.php ver,UPDATE
+	ex.: php emit_update.php 1.81,UPDATE
+- Rollback working.  Ver# provided in terminal is the last version that caused the failure, 
+  not the one you want to rollback to
+	Usage: ./rollback ver#
+	ex.: ./rollback 1.81
+
+
+	
+	
+PENDING:
+Next/Previous page
+Send email to admins if brute-force attack detected
+
